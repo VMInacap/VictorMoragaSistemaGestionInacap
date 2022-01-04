@@ -1,0 +1,96 @@
+CREATE DATABASE testabogado;
+
+USE testabogado;
+
+CREATE TABLE trabajadores(
+		id int auto_increment primary key,
+		nombre varchar(30),
+		apepat varchar(40),
+		apemat varchar(40),
+		RUN varchar(15),
+		telefono int,
+		direccion varchar(80),
+		usuario varchar(65),
+		contrasena varchar(70),		
+		estado TINYINT,		
+		id_rol int not null,		
+		id_local int not null);
+		
+CREATE TABLE roles(
+		id int auto_increment primary key,
+		rol varchar(45));
+		
+CREATE TABLE locales(
+		id int auto_increment primary key,
+		nombre_local varchar(45),
+		numero_local INT,
+		direccion varchar(80));
+
+CREATE TABLE clientes(
+		id int auto_increment primary key,
+		nombre varchar(30),
+		apepat varchar(40),
+		apemat varchar(40),
+		RUN varchar(15),
+		telefono int,
+		direccion varchar(80),
+		email varchar(65),
+		estado_civil varchar(15));
+
+CREATE TABLE causas(
+		id int auto_increment primary key,
+		caratula varchar(30) not null,
+		rol varchar(15) unique not null,
+		ultimo_mov datetime not null,
+		id_materia int not null,
+		id_trabajador int not null,
+		id_cliente int not null,
+		pago int not null);
+
+CREATE TABLE materias(
+		id int auto_increment primary key,
+		materia varchar(40) not null);
+
+CREATE TABLE misc(
+		id int auto_increment primary key,
+		ultimo_mov datetime not null,
+		tarea varchar(40) not null,
+		observaciones text,
+		id_trabajadorb int not null,
+		id_clienteb int not null);
+
+alter table trabajadores add Constraint FK_ID_rol Foreign Key (id_rol) References roles (id);
+
+alter table trabajadores add Constraint FK_ID_cargo Foreign Key (id_cargo) References cargos (id);
+
+alter table trabajadores add Constraint FK_ID_local Foreign Key (id_local) References locales (id);
+
+alter table causas add Constraint FK_ID_materia Foreign Key (id_materia) References materias (id);
+
+alter table causas add Constraint FK_ID_trabajador Foreign Key (id_trabajador) References trabajadores (id);
+
+alter table causas add Constraint FK_ID_cliente Foreign Key (id_cliente) References clientes (id);
+
+alter table misc add Constraint FK_ID_trabajador2 Foreign Key (id_trabajadorb) References trabajadores (id);
+
+alter table misc add Constraint FK_ID_cliente2 Foreign Key (id_clienteb) References clientes (id);
+
+INSERT INTO roles(rol) VALUES("Administrador");
+
+INSERT INTO roles(rol) VALUES("Abogado principal");
+
+INSERT INTO roles(rol) VALUES("Abogado junior");
+
+INSERT INTO roles(rol) VALUES("Asistente principal");
+
+INSERT INTO roles(rol) VALUES("Asistente secundario");
+
+INSERT INTO materias(materia) VALUES("Intento de robo");
+
+INSERT INTO locales(nombre_local,numero_local,direccion) VALUES("Oficina Punta Arenas",1,"Errazuriz #840, 2º Piso Oficina Nº2");
+
+INSERT INTO locales(nombre_local,numero_local,direccion) VALUES("Oficina Puerto Natales",2,"Esmeralda #856-A");
+
+INSERT INTO trabajadores(nombre, apepat, apemat, RUN, telefono, direccion, usuario, contrasena, estado, id_rol, id_local) VALUES ("Victor","Moraga","Cardenas","17910376-1",00000239,"Pasaje XXXXXXXX #XXXXX","victor.moraga","21232f297a57a5a743894a0e4a801fc3",1,1,1);
+
+INSERT INTO clientes(nombre, apepat, apemat, RUN, telefono, direccion, email, estado_civil) VALUES ("NombreCliente","ApePatCliente","ApeMatCliente","71019673-9",00000237,"Pasaje XXXXXXXX #XXXXX","email@gotmail.com","Soltero");
