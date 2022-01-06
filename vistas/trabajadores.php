@@ -14,8 +14,6 @@
             $conexion = $c->conexion();
             $sql = "select id,rol from roles";
             $rs = mysqli_query($conexion, $sql);
-            $sql2="select id,cargo from cargos";
-            $rs2=mysqli_query($conexion,$sql2);
             $sql3="select id,nombre_local from locales";
             $rs3=mysqli_query($conexion,$sql3);
             ?>

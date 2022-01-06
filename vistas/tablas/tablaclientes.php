@@ -18,7 +18,9 @@ $result=  mysqli_query($conexion, $sql);
         <td><b>Telefono</b></td>
         <td><b>Direccion</b></td>
         <td><b>Correo</b></td>      
-        <td><b>Estado civil</b></td>           
+        <td><b>Estado civil</b></td>               
+        <td><b>Editar</b></td>
+        <td><b>Eliminar</b></td>           
     </tr>
     </b>
     <?php 
@@ -33,5 +35,7 @@ $result=  mysqli_query($conexion, $sql);
         <td><?php echo $tabla[6] ?></td>
         <td><?php echo $tabla[7] ?></td>
         <td><?php echo $tabla[8] ?></td>
+        <td><span class="btn btn-warning btn-xs" data-toggle="modal" data-target="#editarCliente" onclick="agregaDatosCliente('<?php echo $tabla[0] ?>')"><span class="glyphicon glyphicon-pencil"></span></span></td>
+        <td><span class="btn btn-danger btn-xs" onclick="eliminarCliente('<?php echo $tabla[0] ?>')"><span class="glyphicon glyphicon-remove"></span></span></td>
     </tr><?php    endwhile;?>
 </table>

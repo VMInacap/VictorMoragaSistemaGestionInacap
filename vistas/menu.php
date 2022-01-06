@@ -29,7 +29,7 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-tasks"></span> Causas y miscelaneos <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="subida.php">Causas</a></li>
+              <li><a href="causas.php">Causas</a></li>
               <li><a href="Solicitudes.php">Miscelaneos</a></li>
               <li><a href="subida.php">Subida</a></li>
             </ul>

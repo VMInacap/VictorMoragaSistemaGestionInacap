@@ -5,7 +5,8 @@
 require_once '../../clases/conexion.php';
 $c=new conectar();
 $conexion=$c->conexion();
-$sql="SELECT causas.id, causas.caratula, causas.rol, causas.ultimo_mov, causas.materia, causas.id_trabajador, causas.id_cliente, causas.pago FROM causas";
+$sql="SELECT causas.id, causas.caratula, causas.rol, causas.ultimo_mov, materias.materia, concat(trabajadores.nombre,' ', trabajadores.apepat,' ' ,trabajadores.apemat) as nombrecompletoT, concat(clientes.nombre,' ', clientes.apepat,' ' ,clientes.apemat) as nombrecompletoC, causas.pago FROM causas"
+." INNER JOIN materias ON materias.id=causas.id_materia INNER JOIN trabajadores ON trabajadores.id=causas.id_trabajador INNER JOIN clientes ON clientes.id=causas.id_cliente";
 $result=  mysqli_query($conexion, $sql);
 ?>
 <table class="table table-hover table-condensed table-bordered" style="text-align: center">
@@ -17,7 +18,9 @@ $result=  mysqli_query($conexion, $sql);
         <td><b>Materia</b></td>
         <td><b>Trabajador asignado</b></td>
         <td><b>Cliente</b></td>
-        <td><b>Estado pago</b></td>             
+        <td><b>Estado pago</b></td>               
+        <td><b>Editar</b></td>
+        <td><b>Cambiar a pagado</b></td>           
     </tr>
     </b>
     <?php 
@@ -31,5 +34,7 @@ $result=  mysqli_query($conexion, $sql);
         <td><?php echo $tabla[5] ?></td>
         <td><?php echo $tabla[6] ?></td>
         <td><?php echo $tabla[7] ?></td>
+		<td><span class="btn btn-warning btn-xs" data-toggle="modal" data-target="#editarCausa" onclick="agregaDatosCausa('<?php echo $tabla[0] ?>')"><span class="glyphicon glyphicon-pencil"></span></span></td>
+        <td><span class="btn btn-danger btn-xs" onclick="eliminarCliente('<?php echo $tabla[0] ?>')"><span class="glyphicon glyphicon-remove"></span></span></td>
     </tr><?php    endwhile;?>
 </table>

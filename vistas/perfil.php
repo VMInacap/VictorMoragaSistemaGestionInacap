@@ -12,7 +12,7 @@
             require_once '../clases/conexion.php';
             $c = new conectar();
             $conexion = $c->conexion();
-            $sql4="SELECT trabajadores.id, trabajadores.nombre, trabajadores.apepat, trabajadores.apemat, trabajadores.RUN, trabajadores.telefono, trabajadores.direccion, trabajadores.usuario, roles.rol, cargos.cargo, locales.nombre_local FROM trabajadores INNER JOIN roles ON trabajadores.id_rol=roles.id INNER JOIN cargos ON trabajadores.id_cargo=cargos.id INNER JOIN locales ON trabajadores.id_local=locales.id WHERE trabajadores.estado=1";
+            $sql4="SELECT trabajadores.id, trabajadores.nombre, trabajadores.apepat, trabajadores.apemat, trabajadores.RUN, trabajadores.telefono, trabajadores.direccion, trabajadores.usuario, roles.rol, locales.nombre_local FROM trabajadores INNER JOIN roles ON trabajadores.id_rol=roles.id INNER JOIN locales ON trabajadores.id_local=locales.id WHERE trabajadores.estado=1";
             $result=  mysqli_query($conexion, $sql4);
             ?>
         </head>
@@ -40,9 +40,9 @@
                         <div class="col-sm-4"><h3>Dirección:</h3>
                         <div class="bg-info"><h4><?php echo $tabla[6] ?></h4></div></div>
                         <div class="col-sm-4"><h3>Cargo:</h3>
-                        <div class="bg-info"><h4><?php echo $tabla[9] ?></h4></div></div>
+                        <div class="bg-info"><h4><?php echo $tabla[8] ?></h4></div></div>
                         <div class="col-sm-4"><h3>Local:</h3>
-                        <div class="bg-info"><h4><?php echo $tabla[10] ?></h4></div></div>
+                        <div class="bg-info"><h4><?php echo $tabla[9] ?></h4></div></div>
                     </div>
                 <?php    endwhile;?>
             </div>
