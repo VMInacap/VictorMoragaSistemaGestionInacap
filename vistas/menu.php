@@ -30,6 +30,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-tasks"></span> Causas y miscelaneos <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="causas.php">Causas</a></li>
+			  <li><a href="causaspagadas.php">Causas Pagadas</a></li>
               <li><a href="misc.php">Miscelaneos</a></li>
               <li><a href="subida.php">Subida</a></li>
             </ul>
@@ -39,6 +40,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-edit"></span> Cartera de clientes <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="clientes.php">Lista de clientes</a></li>              
+			  <li><a href="clientesimpagos.php">Clientes Impagos</a></li>
             </ul>
           </li>
             <li class="dropdown">
