@@ -59,16 +59,5 @@ class clientes{
         $conexion = $c->conexion();
         $sql = "delete from clientes where id='$idclient'";
         return mysqli_query($conexion, $sql);
-    }
-    /**
-     * Se realiza un update que modifica la columna estado del cliente elegido
-     * @param type $idclient Se obtiene el valor del id del cliente elegido y se usa como condicion where
-     * @return type Recibe la información y se ingresa en un string sql para despues enviar el string a la base de datos
-     */
-    public function recuperaCliente($idclient) {
-        $c = new conectar();
-        $conexion = $c->conexion();
-        $sql = "update clientes set estado=1 where id='$idclient'";
-        return mysqli_query($conexion, $sql);
-    }
+    }    
 }

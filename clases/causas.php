@@ -28,33 +28,31 @@ class causas{
      * @param type $idclient Se obtiene el valor del id de la causa elegida y se usa como condición where
      * @return type Se entrega el resultado de un select usando el idclient para enviar al frmECliente y rellenar sus campos
      */
-    public function obtenDatosCliente($idclient) {
+    public function obtenDatosCausa($idcausa) {
         $c = new conectar();
         $conexion = $c->conexion();
-        $sql = "select id,nombre,apepat,apemat,telefono,direccion,email,estado_civil from causas where id='$idclient'";
+        $sql = "select id,caratula,rol,id_materia,id_trabajador,id_cliente from causas where id='$idcausa'";
         $result = mysqli_query($conexion, $sql);
         $ver = mysqli_fetch_row($result);
         $datos = array(
             "id" => $ver[0],
-            "nombre" => $ver[1],
-            "apepat" => $ver[2],
-            "apemat" => $ver[3],
-            "telefono" => $ver[4],
-            "direccion" => $ver[5],
-            "email" => $ver[6],
-            "estado_civil" => $ver[7],
+            "caratula" => $ver[1],
+            "rol" => $ver[2],
+            "id_materia" => $ver[3],
+            "id_trabajador" => $ver[4],
+            "id_cliente" => $ver[5]
         );
         return $datos;
     }
     /**
      * Editar una causa en la base de datos
-     * @param type $datos Trae los elementos de frmECausas y es convertido en un array datos en el proceso editaCliente
+     * @param type $datos Trae los elementos de frmECausas y es convertido en un array datos en el proceso editaCausa
      * @return type Recibe la información y se ingresa en un string sql para despues enviar el string a la base de datos
      */
-    public function editaCliente($datos) {
+    public function editaCausa($datos) {
         $c = new conectar();
         $conexion = $c->conexion();
-        $sql = "update causas set nombre='$datos[1]',apepat='$datos[2]',apemat='$datos[3]',telefono='$datos[4]',direccion='$datos[5]',email='$datos[6]',estado_civil='$datos[7]' where id='$datos[0]'";
+        $sql = "update causas set caratula='$datos[1]',rol='$datos[2]',ultimo_mov='$datos[3]',id_materia='$datos[4]',id_trabajador='$datos[5]',id_cliente='$datos[6]' where id='$datos[0]'";
         return mysqli_query($conexion, $sql);
     }
     /**
@@ -62,21 +60,10 @@ class causas{
      * @param type $idclient Se obtiene el valor del id de la causas elegida y se usa como condicion where
      * @return type Recibe la información y se ingresa en un string sql para despues enviar el string a la base de datos
      */
-    public function eliminaCliente($idclient) {
+    public function pagoCausa($idcau) {
         $c = new conectar();
         $conexion = $c->conexion();
-        $sql = "delete from causas where id='$idclient'";
-        return mysqli_query($conexion, $sql);
-    }
-    /**
-     * Se realiza un update que modifica la columna estado de la causa elegida
-     * @param type $idclient Se obtiene el valor del id de la causa elegida y se usa como condicion where
-     * @return type Recibe la información y se ingresa en un string sql para despues enviar el string a la base de datos
-     */
-    public function recuperaCliente($idclient) {
-        $c = new conectar();
-        $conexion = $c->conexion();
-        $sql = "update causas set estado=1 where id='$idclient'";
+        $sql = "update causas set pago=0 where id='$idcau'";
         return mysqli_query($conexion, $sql);
     }
 }

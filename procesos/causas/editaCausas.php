@@ -1,19 +1,18 @@
 <?php
 /**
- * Recibe los datos de frmEClientes, los traslada a un array $datos y lo envia a 'clases/clientes.php'
+ * Recibe los datos de frmECausas, los traslada a un array $datos y lo envia a 'clases/causas.php'
  */
 require_once '../../clases/conexion.php';
-require_once '../../clases/clientes.php';
-$obj=new clientes();
-
+require_once '../../clases/causas.php';
+$obj=new causas();
+$fecha=date("Y-m-d");
 $datos=array(
-    $_POST['idCliente'],
-    $_POST['editarnombreC'],
-    $_POST['editarapepatC'],
-    $_POST['editarapematC'],
-    $_POST['editartelefonoC'],
-    $_POST['editardireccionC'],
-    $_POST['editaremailC'],
-    $_POST['editarestcivC']  
+    $_POST['idCausa'],
+    $_POST['editarcarat'],
+    $_POST['editarrol'],
+	$fecha,
+    $_POST['editarmateria'],
+    $_POST['editartrabaj'],
+    $_POST['editarcliente'] 
 );
-echo $obj->editaCliente($datos);
+echo $obj->editaCausa($datos);
