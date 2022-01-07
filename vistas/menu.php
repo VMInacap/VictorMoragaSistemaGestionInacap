@@ -34,6 +34,7 @@
 			  <li><a href="causasfinalizadas.php">Causas Finalizadas</a></li>
               <li><a href="misc.php">Miscelaneos</a></li>
               <li><a href="subida.php">Subida</a></li>
+			  <li><a href="graficopromedios.php">Promedios de causas</a></li>
             </ul>
           </li>
 
