@@ -160,6 +160,22 @@
             });
         }
     </script>
+	    <script>
+            function finCausa(idCausa){
+            alertify.confirm('¿Desea marcar esta causa como finalizada?', function () {
+                $.ajax({
+                type:"POST", data:"idcau=" + idCausa, url:"../procesos/causas/finCausas.php", success:function (r) {                    
+                    if (r == 1) {                        
+                        $('#tablaCausasLoad').load('tablas/tablaCausas.php');
+                        alertify.success("Causa marcada como pagada exitosamente");
+                    } else {
+                        alertify.error("Error");
+                    }
+                    }
+                });
+            });
+        }
+    </script>
     <script>
         $(document).ready(function () {
             $('#btnEditarCausa').click(function () {

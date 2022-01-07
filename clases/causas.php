@@ -19,9 +19,9 @@ class causas{
     function agregaCausa($datos){        
         $c = new conectar();
         $conexion = $c->conexion();
-        $sql = "Insert into causas (caratula,rol,ultimo_mov,id_materia,id_trabajador,id_cliente,pago)"
-                . " values('$datos[0]','$datos[1]','$datos[2]','$datos[3]','$datos[4]','$datos[5]','$datos[6]')";
-        return mysqli_query($conexion, $sql);
+        $sql = "Insert into causas (caratula,rol,ultimo_mov,fecha_creacion,fecha_termino,id_materia,id_trabajador,id_cliente,pago)"
+                . " values('$datos[0]','$datos[1]','$datos[2]','$datos[3]','$datos[4]','$datos[5]','$datos[6]','$datos[7]','$datos[8]')";
+        return mysqli_query($conexion, $sql);		
     }
     /**
      * Se recibe el id para enviar los datos correspondientes de la causa elegida para modificar
@@ -62,8 +62,15 @@ class causas{
      */
     public function pagoCausa($idcau) {
         $c = new conectar();
-        $conexion = $c->conexion();
+        $conexion = $c->conexion();		
         $sql = "update causas set pago=0 where id='$idcau'";
+        return mysqli_query($conexion, $sql);
+    }
+	public function finCausa($idcau) {
+        $c = new conectar();
+        $conexion = $c->conexion();
+		$fechafin=date("Y-m-d");
+        $sql = "update causas set fecha_termino='$fechafin', pago=2 where id='$idcau'";
         return mysqli_query($conexion, $sql);
     }
 }

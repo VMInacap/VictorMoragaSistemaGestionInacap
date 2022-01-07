@@ -31,6 +31,7 @@
             <ul class="dropdown-menu">
               <li><a href="causas.php">Causas</a></li>
 			  <li><a href="causaspagadas.php">Causas Pagadas</a></li>
+			  <li><a href="causasfinalizadas.php">Causas Finalizadas</a></li>
               <li><a href="misc.php">Miscelaneos</a></li>
               <li><a href="subida.php">Subida</a></li>
             </ul>

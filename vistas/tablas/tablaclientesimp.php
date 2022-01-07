@@ -2,12 +2,12 @@
 require_once '../../clases/conexion.php';
 $c=new conectar();
 $conexion=$c->conexion();
-$sql="SELECT clientes.id, clientes.nombre, clientes.apepat, clientes.apemat, clientes.RUN, clientes.telefono, clientes.direccion, clientes.email, clientes.estado_civil, causas.pago FROM clientes"
+$sql="SELECT clientes.id, clientes.nombre, clientes.apepat, clientes.apemat, clientes.RUN, clientes.telefono, clientes.direccion, clientes.email, clientes.estado_civil, causas.rol, causas.pago FROM clientes"
 ." INNER JOIN causas ON clientes.id=causas.id_cliente WHERE causas.pago=1";
 $result=  mysqli_query($conexion, $sql);
 ?>
 <table class="table table-hover table-condensed table-bordered" style="text-align: center">
-    <caption><label>Clientes</label></caption>
+    <caption><label></label></caption>
     <tr>
         <td><b>Nombre</b></td>
         <td><b>Apellido paterno</b></td>
@@ -16,7 +16,8 @@ $result=  mysqli_query($conexion, $sql);
         <td><b>Telefono</b></td>
         <td><b>Direccion</b></td>
         <td><b>Correo</b></td>      
-        <td><b>Estado civil</b></td>               
+        <td><b>Estado civil</b></td>   
+		<td><b>Rol de causa</b></td>   
         <td><b>Editar</b></td>        
     </tr>
     </b>
@@ -32,6 +33,7 @@ $result=  mysqli_query($conexion, $sql);
         <td><?php echo $tabla[6] ?></td>
         <td><?php echo $tabla[7] ?></td>
         <td><?php echo $tabla[8] ?></td>
+		<td><?php echo $tabla[9] ?></td>
         <td><span class="btn btn-warning btn-xs" data-toggle="modal" data-target="#editarCliente" onclick="agregaDatosCliente('<?php echo $tabla[0] ?>')"><span class="glyphicon glyphicon-pencil"></span></span></td>        
     </tr><?php    endwhile;?>
 </table>

@@ -41,7 +41,7 @@ CREATE TABLE causas(
 		id int auto_increment primary key,
 		caratula varchar(30) not null,
 		rol varchar(15) unique not null,
-		ultimo_mov datetime not null,
+		ultimo_mov date not null,
 		id_materia int not null,
 		id_trabajador int not null,
 		id_cliente int not null,
@@ -53,7 +53,7 @@ CREATE TABLE materias(
 
 CREATE TABLE misc(
 		id int auto_increment primary key,
-		ultimo_mov datetime not null,
+		ultimo_mov date not null,
 		tarea varchar(40) not null,
 		observaciones text,
 		id_trabajadorb int not null,
